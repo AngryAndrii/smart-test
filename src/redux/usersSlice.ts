@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 import { User } from "../types/users";
 import { fetchUsers } from "../axios/fetchUsers";
 
@@ -21,7 +21,7 @@ const usersSlice = createSlice({
     
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchUsers.pending, (state, action) => {
+    builder.addCase(fetchUsers.pending, (state, _) => {
       state.loading = true;
     })
     .addCase(fetchUsers.fulfilled, (state, action) => {
@@ -35,3 +35,5 @@ const usersSlice = createSlice({
     })
   },
 })
+
+export const userReducer =  usersSlice.reducer;
