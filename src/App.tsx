@@ -23,10 +23,10 @@ function App() {
     phoneFilter,
   } = useSelector((state: RootState) => state.users);
 
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
-
   const filterResult = users.filter((user) => {
     return (
       user.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
