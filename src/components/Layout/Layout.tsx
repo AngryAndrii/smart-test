@@ -1,6 +1,7 @@
-import { ReactNode, ReactElement } from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import { ReactNode, ReactElement } from 'react';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import { StyledLayout } from './Layout.styled';
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,11 +9,11 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps): ReactElement => {
   return (
-    <>
+    <StyledLayout>
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
-    </>
+    </StyledLayout>
   );
 };
 

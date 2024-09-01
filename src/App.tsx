@@ -1,13 +1,14 @@
+import DataViewer from "./components/DataViwer/DataViewer";
 import Layout from "./components/Layout/Layout";
 
-function App() {
- return (
+const App = () => {
+  return (
     <>
       <Layout>
         <DataViewer />
       </Layout>
     </>
   );
-}
+};
 
 export default App;

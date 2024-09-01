@@ -1,26 +1,16 @@
-import { useEffect } from "react";
-import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "../../redux/store";
-import { fetchUsers } from "../../axios/fetchUsers";
-import { Loader } from "../../components/Loader/Loader";
-import {
-  flterName,
-  filterUserName,
-  filterEmail,
-  filterPhone,
-} from "../../redux/usersSlice";
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../../redux/store';
+import { fetchUsers } from '../../axios/fetchUsers';
+import { Loader } from '../../components/Loader/Loader';
+import { flterName, filterUserName, filterEmail, filterPhone } from '../../redux/usersSlice';
+import { StyledDataViewer } from './DataViewer.styled';
 
 const DataViewer = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {
-    users,
-    loading,
-    nameFilter,
-    usernameFilter,
-    emailFilter,
-    phoneFilter,
-  } = useSelector((state: RootState) => state.users);
+  const { users, loading, nameFilter, usernameFilter, emailFilter, phoneFilter } = useSelector(
+    (state: RootState) => state.users
+  );
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -36,7 +26,7 @@ const DataViewer = () => {
   });
 
   return (
-    <>
+    <StyledDataViewer>
       {loading ? (
         <Loader />
       ) : (
@@ -46,7 +36,7 @@ const DataViewer = () => {
               <th>
                 <input
                   type="text"
-                  placeholder="Search by name"
+                  placeholder="filter by name"
                   value={nameFilter}
                   onChange={(e) => dispatch(flterName(e.target.value))}
                 />
@@ -54,7 +44,7 @@ const DataViewer = () => {
               <th>
                 <input
                   type="text"
-                  placeholder="Search by username"
+                  placeholder="filter by username"
                   value={usernameFilter}
                   onChange={(e) => dispatch(filterUserName(e.target.value))}
                 />
@@ -62,7 +52,7 @@ const DataViewer = () => {
               <th>
                 <input
                   type="text"
-                  placeholder="Search by email"
+                  placeholder="filter by mail"
                   value={emailFilter}
                   onChange={(e) => dispatch(filterEmail(e.target.value))}
                 />
@@ -70,7 +60,7 @@ const DataViewer = () => {
               <th>
                 <input
                   type="text"
-                  placeholder="Search by phone"
+                  placeholder="filter by phone"
                   value={phoneFilter}
                   onChange={(e) => dispatch(filterPhone(e.target.value))}
                 />
@@ -84,18 +74,24 @@ const DataViewer = () => {
             </tr>
           </thead>
           <tbody>
-            {filterResult.map((user) => (
-              <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td>{user.phone}</td>
+            {filterResult.length === 0 ? (
+              <tr className="no-res-data">
+                <td colSpan={4}>no result, please input valid data</td>
               </tr>
-            ))}
+            ) : (
+              filterResult.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.name}</td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>{user.phone}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       )}
-    </>
+    </StyledDataViewer>
   );
 };
 
