@@ -1,7 +1,7 @@
 import Layout from "./components/Layout/Layout";
 
 function App() {
-  return (
+ return (
     <>
       <Layout>
         <DataViewer />
