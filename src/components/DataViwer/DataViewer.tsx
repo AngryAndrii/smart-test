@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
 import { fetchUsers } from '../../axios/fetchUsers';
 import { Loader } from '../../components/Loader/Loader';
-import { flterName, filterUserName, filterEmail, filterPhone } from '../../redux/usersSlice';
+import { filterName, filterUserName, filterEmail, filterPhone } from '../../redux/usersSlice';
 import { StyledDataViewer } from './DataViewer.styled';
+import { filterUsers } from '../../helpers/filter';
 
 const DataViewer = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,15 +16,8 @@ const DataViewer = () => {
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
-
-  const filterResult = users.filter((user) => {
-    return (
-      user.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
-      user.username.toLowerCase().includes(usernameFilter.toLowerCase()) &&
-      user.email.toLowerCase().includes(emailFilter.toLowerCase()) &&
-      user.phone.toLowerCase().includes(phoneFilter.toLowerCase())
-    );
-  });
+ 
+  const filterResult = filterUsers(users, nameFilter, usernameFilter, emailFilter, phoneFilter);
 
   return (
     <StyledDataViewer>
@@ -38,7 +32,7 @@ const DataViewer = () => {
                   type="text"
                   placeholder="filter by name"
                   value={nameFilter}
-                  onChange={(e) => dispatch(flterName(e.target.value))}
+                  onChange={(e) => dispatch(filterName(e.target.value))}
                 />
               </th>
               <th>

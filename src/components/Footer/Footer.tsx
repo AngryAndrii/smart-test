@@ -1,8 +1,10 @@
+import { StyledFooter } from "./Footer.styled";
+
 const Footer = () => {
   return (
-    <footer>
+    <StyledFooter>
       <p>&copy; 2024 Chychkan Andrii</p>
-    </footer>
+    </StyledFooter>
   );
 };
 
