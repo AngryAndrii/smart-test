@@ -1,15 +1,13 @@
+import { FC } from "react";
 import DataViewer from "./components/DataViwer/DataViewer";
 import Layout from "./components/Layout/Layout";
 
 
-const App = () => {
+const App:FC = () => {
   return (
-    <>
       <Layout>
         <DataViewer />
       </Layout>
-
-    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { User } from '../types/users';
+import axios from 'axios';
 
 const URL:string = 'https://jsonplaceholder.typicode.com/users/'
 
