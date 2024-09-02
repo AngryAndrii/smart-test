@@ -1,5 +1,5 @@
 import { ClipLoader } from "react-spinners";
-import { CSSProperties } from "react";
+import { CSSProperties, FC } from "react";
 
 const override: CSSProperties = {
   display: "block",
@@ -7,7 +7,7 @@ const override: CSSProperties = {
   borderWidth: "8px",
 };
 
-export const Loader = () => {
+export const Loader:FC = () => {
   return (
     <ClipLoader
       color={"#a67976"}

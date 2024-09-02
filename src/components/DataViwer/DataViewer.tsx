@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
 import { fetchUsers } from '../../axios/fetchUsers';
@@ -6,10 +6,11 @@ import { Loader } from '../../components/Loader/Loader';
 import { filterName, filterUserName, filterEmail, filterPhone } from '../../redux/usersSlice';
 import { StyledDataViewer } from './DataViewer.styled';
 import { filterUsers } from '../../helpers/filter';
+import { Error } from '../Error/Error';
 
-const DataViewer = () => {
+const DataViewer:FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { users, loading, nameFilter, usernameFilter, emailFilter, phoneFilter } = useSelector(
+  const { users, error, loading, nameFilter, usernameFilter, emailFilter, phoneFilter } = useSelector(
     (state: RootState) => state.users
   );
 
@@ -18,6 +19,10 @@ const DataViewer = () => {
   }, [dispatch]);
  
   const filterResult = filterUsers(users, nameFilter, usernameFilter, emailFilter, phoneFilter);
+
+ if (error) {
+  return <Error/>
+ }
 
   return (
     <StyledDataViewer>

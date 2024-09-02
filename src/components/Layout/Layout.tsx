@@ -1,13 +1,14 @@
-import { ReactNode, ReactElement } from 'react';
+import { ReactNode, FC } from 'react';
+import { StyledLayout } from './Layout.styled';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { StyledLayout } from './Layout.styled';
+
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps): ReactElement => {
+const Layout:FC<LayoutProps> = ({ children }) => {
   return (
     <StyledLayout>
       <Header />
