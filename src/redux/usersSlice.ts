@@ -16,7 +16,7 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    flterName: (state, action: PayloadAction<string>) => {
+    filterName: (state, action: PayloadAction<string>) => {
       state.nameFilter = action.payload;
     },
     filterUserName: (state, action: PayloadAction<string>) => {
@@ -30,7 +30,7 @@ const usersSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchUsers.pending, (state, _) => {
+    builder.addCase(fetchUsers.pending, (state) => {
       state.loading = true;
     })
     .addCase(fetchUsers.fulfilled, (state, action) => {
@@ -46,5 +46,5 @@ const usersSlice = createSlice({
 })
 
 
-export const { flterName, filterUserName, filterEmail, filterPhone } = usersSlice.actions;
+export const { filterName, filterUserName, filterEmail, filterPhone } = usersSlice.actions;
 export const userReducer =  usersSlice.reducer;

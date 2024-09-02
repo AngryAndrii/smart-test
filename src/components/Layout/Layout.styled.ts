@@ -5,4 +5,6 @@ export const StyledLayout = styled.div`
   flex-direction: column;
   padding: 50px 30px 50px 30px;
   background-color: rgba(85, 90, 100, 0.392);
+  height: 100vh;
+  row-gap: 50px;
 `;

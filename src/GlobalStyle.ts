@@ -11,12 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(33, 29, 36, 0.392);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: rgba(13, 9, 16, 0.9);
+  font-weight: 400;
 }
 
 * {
